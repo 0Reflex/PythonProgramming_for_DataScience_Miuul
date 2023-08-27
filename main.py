@@ -1292,8 +1292,6 @@ target_summary_with_num(df, "survived", "age")
 for col in num_cols:
     target_summary_with_num(df, "survived", col)
 
-
-
 ######################################
 # 5. Analysis of Correlation
 ######################################
@@ -1305,13 +1303,27 @@ import matplotlib.pyplot as plt
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 500)
-df = pd.read_csv("datasets/dataset/Breast_Cancer.csv")
+df = pd.read_csv("datasets/dataset/data.csv")
 
 print(df.head())
 
 num_cols = [col for col in df.columns if df[col].dtype in ["int", "float"]]
 corr = df[num_cols].corr()
 print(corr)
-#sns.set(rc={'figure.figsize': (12, 12)})
-#sns.heatmap(corr, cmap="RdBu")
-#plt.show()
+sns.set(rc={'figure.figsize': (12, 12)})
+sns.heatmap(corr, cmap="RdBu")
+plt.show()
+
+##########################
+# Yüksek Korelasyonlu Değişkenlerin Silinmesi
+##########################
+
+# Assuming df is your DataFrame
+
+cor_matrix = df.corr().abs()
+
+upper_triangle_matrix = cor_matrix.where(np.triu(np.ones(cor_matrix.shape), k=1).astype(np.bool))
+drop_list = [col for col in upper_triangle_matrix.columns if any(upper_triangle_matrix[col] > 0.90)]
+print(drop_list)
+cor_matrix[drop_list]
+df.drop(drop_list, axis=1)
