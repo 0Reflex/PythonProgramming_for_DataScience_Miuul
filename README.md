@@ -21,3 +21,6 @@
 
 
 ![Data6](https://github.com/0Reflex/PythonProgramming_for_DataScience_Miuul/assets/113729528/52d7008f-73ea-465e-bed7-4289cb756059)
+
+
+![Data](https://github.com/0Reflex/PythonProgramming_for_DataScience_Miuul/assets/113729528/28879ed5-a55f-4988-892e-8400652cda6f)
